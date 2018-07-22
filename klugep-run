@@ -1,0 +1,21 @@
+#!/bin/bash
+askYesOrNo() {
+    while true ; do
+        read -p "$1 (y/n)?" answer
+        case $answer in
+            [yY] | [yY]es | YES )
+                return 0;;
+            [nN] | [nN]o | NO )
+                return 1;;
+            * )
+                return 1;;
+        esac
+    done
+}
+
+askYesOrNo "Are you going to create a NEW klugep container"
+if [ $? -ne 0 ] ; then
+	exit $?
+fi
+docker run -d -h klugep --name klugep -it -v $HOME/klugep:/home/klugep \
+	-v $HOME/Git:/home/klugep/Git -u klugep klugep /bin/bash
