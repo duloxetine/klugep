@@ -1,2 +1,2 @@
 # klugp
-Kansai Lisp User Group Platform
+Kansai Lisp User Group Evaluation Platform
